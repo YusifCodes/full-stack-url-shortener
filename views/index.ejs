@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusif's Url shortener</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/styles/style.css">
+</head>
+
+<body>
+    <div class="container p-1">
+        <nav class="navbar border-bottom">
+            <p class="navbar-brand nav-hero dark-purple mx-auto">urlyus.com</p>
+        </nav>
+    </div>
+
+    <div class="container">
+        <p class="hero dark-purple">Not just a url shortener</p>
+        <img src="hero.png" class="hero-img" alt="Link Sharing">
+
+        <div class="article-pos">
+            <article class="text">
+                But a tool, built with love, to help you grow.
+            </article>
+        </div>
+
+
+        <div class="container-fluid url-container mx-auto pb-4">
+            <h5 class="input-title">Paste your link here:</h2>
+
+                <form action="/shortUrls" method="POST">
+                    <div class="mx-auto input-group mb-3 pb-3 w-75">
+                        <input type="text" id="fullUrl" name="fullUrl" class="form-control" placeholder="url">
+                    </div>
+                    <button type="submit" class="btn submit-btn w-25">Shorten</button>
+                </form>
+        </div>
+
+        <div class="table-container table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="table-title">Full url</th>
+                        <th scope="col" class="table-title">Shortened url</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% shortUrls.forEach(shortUrl=> { %>
+                        <tr>
+                            <td scope="col"><a class="table-text" href="<%= shortUrl.full %>">
+                                    <%= shortUrl.full %>
+                                </a></td>
+                            <td scope="col"><a class="table-text" href="<%= shortUrl.short %>">
+                                    <%= `urlyus.com/${shortUrl.short}` %>
+                                </a></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container-fluid contact-container h-25">
+
+    </div>
+
+
+    <script src="server.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
